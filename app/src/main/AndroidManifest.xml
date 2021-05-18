@@ -11,13 +11,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectGuru">
-        <activity android:name=".ProjectsList"></activity>
+        <activity android:name=".ui.PhaseNote"></activity>
+        <activity android:name=".ui.WorkUnitNote" />
+        <activity android:name=".ui.WorkUnitDetail" />
+        <activity android:name=".ui.PhaseEdit" />
+        <activity android:name=".ui.PhaseDetail" />
+        <activity android:name=".ui.ProjectDetail" />
+        <activity
+            android:name=".ui.ProjectEdit"
+            android:label="Add or Edit Project" />
+        <activity
+            android:name=".ui.ProjectsList"
+            android:label="Projects" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
         -->
         <activity
-            android:name=".Home"
+            android:name=".ui.Home"
             android:label="Home" />
         <activity android:name=".ui.MainActivity">
             <intent-filter>
