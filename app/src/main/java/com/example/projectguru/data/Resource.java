@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 
 @Entity(
         tableName = "resource_table",
-        indices = {@Index(value = "workunit_id_fk")}
+        indices = {@Index(value = "workunit_id")}
 )
 
 public class Resource {
