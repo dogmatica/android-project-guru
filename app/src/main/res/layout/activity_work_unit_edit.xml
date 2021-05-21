@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightgrey"
-    tools:context=".ui.PhaseEdit">
+    tools:context=".ui.WorkUnitEdit">
 
     <TextView
         android:id="@+id/textView2"
@@ -15,7 +15,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="90dp"
         android:fontFamily="sans-serif-black"
-        android:text="Phase Name"
+        android:text="Work Unit Name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/phaseSaveButton"
+        android:id="@+id/workUnitSaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -50,10 +50,10 @@
         android:clickable="true"
         android:src="@android:drawable/ic_menu_save"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phaseEndDate" />
+        app:layout_constraintTop_toBottomOf="@+id/workUnitEndDate" />
 
     <EditText
-        android:id="@+id/phaseStartDate"
+        android:id="@+id/workUnitStartDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -62,10 +62,10 @@
         android:ems="10"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phaseNamePlainText" />
+        app:layout_constraintTop_toBottomOf="@+id/workUnitNamePlainText" />
 
     <EditText
-        android:id="@+id/phaseEndDate"
+        android:id="@+id/workUnitEndDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -74,10 +74,10 @@
         android:ems="10"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phaseStartDate" />
+        app:layout_constraintTop_toBottomOf="@+id/workUnitStartDate" />
 
     <EditText
-        android:id="@+id/phaseNamePlainText"
+        android:id="@+id/workUnitNamePlainText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
