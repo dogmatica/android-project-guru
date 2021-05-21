@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.ProjectReports"
-    android:stretchColumns="1,2,3"
+    android:stretchColumns="1,2,3,4"
     android:layout_margin="8dp"
     android:background="@color/lightgrey">
 
@@ -13,6 +13,14 @@
 
             <TextView
                 android:text="Project Name"
+                android:padding="10dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_column="1"/>
+
+            <TextView
+                android:text="Status"
                 android:padding="10dp"
                 android:textSize="16dp"
                 android:textStyle="bold"

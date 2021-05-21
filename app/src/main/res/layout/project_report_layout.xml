@@ -2,12 +2,19 @@
 <TableLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:stretchColumns="1,2,3">
+    android:stretchColumns="1,2,3,4">
 
     <TableRow>
 
         <TextView
             android:id="@+id/project_name_tv"
+            android:layout_column="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/project_status_tv"
             android:layout_column="1"
             android:gravity="center"
             android:padding="10dp"

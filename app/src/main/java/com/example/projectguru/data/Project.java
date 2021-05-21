@@ -16,6 +16,8 @@ public class Project {
     private int project_id;
     @ColumnInfo(name = "project_name")
     private String project_name;
+    @ColumnInfo(name = "project_status")
+    private String project_status;
     @ColumnInfo(name = "project_start")
     private Date project_start;
     @ColumnInfo(name = "project_end")
@@ -53,5 +55,13 @@ public class Project {
 
     public void setProject_end(Date project_end) {
         this.project_end = project_end;
+    }
+
+    public String getProject_status() {
+        return project_status;
+    }
+
+    public void setProject_status(String project_status) {
+        this.project_status = project_status;
     }
 }

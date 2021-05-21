@@ -14,7 +14,7 @@ public interface WorkUnitDao {
     List<WorkUnit> getWorkUnitList();
 
     @Query("SELECT * FROM workunit_table WHERE phase_id_fk = :phaseId ORDER BY workunit_id")
-    List<WorkUnit> getCourseWorkUnitList(int phaseId);
+    List<WorkUnit> getPhaseWorkUnitList(int phaseId);
 
     @Query("SELECT * FROM workunit_table WHERE phase_id_fk = :phaseId AND workunit_id = :workunitId")
     WorkUnit getWorkUnit(int phaseId, int workunitId);
