@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectGuru">
-        <activity android:name=".ui.WorkUnitEdit"></activity>
+        <activity android:name=".ui.ProjectReports"></activity>
+        <activity android:name=".ui.WorkUnitEdit" />
         <activity android:name=".ui.WorkUnitNoteEdit" />
         <activity android:name=".ui.PhaseNoteEdit" />
         <activity android:name=".ui.PhaseNote" />

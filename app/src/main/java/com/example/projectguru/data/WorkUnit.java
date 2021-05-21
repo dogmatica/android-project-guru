@@ -41,6 +41,8 @@ public class WorkUnit {
     private Date workUnit_goal;
     @ColumnInfo(name = "workunit_status")
     private String workUnit_status;
+    @ColumnInfo(name = "workunit_notes")
+    private String workUnit_notes;
 
     //WorkUnit field getters and setters
 
@@ -71,4 +73,8 @@ public class WorkUnit {
     public String getWorkUnit_status() { return workUnit_status; }
 
     public void setWorkUnit_status(String workUnit_status) {this.workUnit_status = workUnit_status;}
+
+    public String getWorkUnit_notes() { return workUnit_notes; }
+
+    public void setWorkUnit_notes(String workUnit_notes) {this.workUnit_status = workUnit_notes;}
 }
