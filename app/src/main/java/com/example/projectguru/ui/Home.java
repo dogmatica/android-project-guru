@@ -1,6 +1,7 @@
 package com.example.projectguru.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -10,6 +11,8 @@ import androidx.constraintlayout.widget.ConstraintSet;
 
 import com.example.projectguru.R;
 import com.example.projectguru.data.MainDatabase;
+import com.example.projectguru.data.NukeDatabase;
+import com.example.projectguru.data.PopulateDatabase;
 import com.example.projectguru.data.Project;
 
 import java.time.LocalDate;
@@ -18,6 +21,7 @@ import java.util.List;
 
 public class Home extends AppCompatActivity {
 
+    public static String LOG_TAG = "Home";
     TextView todaysDateTextView;
     TextView projectsPendingCountTextView;
     TextView completedCountTextView;
@@ -83,6 +87,24 @@ public class Home extends AppCompatActivity {
         myLayout.addView(nukeDBButton);
         setContentView(myLayout);
         set.applyTo(myLayout);
+
+        //When the Populate Database button is pressed:
+
+        populateDBButton.setOnClickListener(v -> {
+            Log.d(LOG_TAG, "populate DB button pressed");
+            PopulateDatabase populateDatabase = new PopulateDatabase();
+            populateDatabase.populate(getApplicationContext());
+            updateViews();
+        });
+
+        //When the Delete Database button is pressed:
+
+        nukeDBButton.setOnClickListener(v -> {
+            Log.d(LOG_TAG, "nuke DB button pressed");
+            NukeDatabase nukeDatabase = new NukeDatabase();
+            nukeDatabase.nuke(getApplicationContext());
+            updateViews();
+        });
 
     }
 
