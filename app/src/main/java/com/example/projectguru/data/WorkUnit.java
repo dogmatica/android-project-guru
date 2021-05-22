@@ -35,10 +35,10 @@ public class WorkUnit {
     private String workUnit_title;
     @ColumnInfo(name = "workunit_type")
     private String workUnit_type;
-    @ColumnInfo(name = "workunit_due")
-    private Date workUnit_due;
-    @ColumnInfo(name = "workunit_goal")
-    private Date workUnit_goal;
+    @ColumnInfo(name = "workunit_start")
+    private Date workUnit_start;
+    @ColumnInfo(name = "workunit_end")
+    private Date workUnit_end;
     @ColumnInfo(name = "workunit_status")
     private String workUnit_status;
     @ColumnInfo(name = "workunit_notes")
@@ -62,13 +62,13 @@ public class WorkUnit {
 
     public void setWorkUnit_type(String workUnit_type)  {this.workUnit_type = workUnit_type;}
 
-    public Date getWorkUnit_due() { return workUnit_due;}
+    public Date getWorkUnit_start() { return workUnit_start;}
 
-    public void setWorkUnit_due(Date workUnit_due)  {this.workUnit_due = workUnit_due;}
+    public void setWorkUnit_start(Date workUnit_start)  {this.workUnit_start = workUnit_start;}
 
-    public Date getWorkUnit_goal() { return workUnit_goal;}
+    public Date getWorkUnit_end() { return workUnit_end;}
 
-    public void setWorkUnit_goal(Date workUnit_goal)  {this.workUnit_goal = workUnit_goal;}
+    public void setWorkUnit_goal(Date workUnit_end)  {this.workUnit_end = workUnit_end;}
 
     public String getWorkUnit_status() { return workUnit_status; }
 

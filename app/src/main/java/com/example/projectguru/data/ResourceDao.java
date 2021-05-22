@@ -16,6 +16,9 @@ public interface ResourceDao {
     @Query("SELECT * FROM resource_table WHERE resource_id = :resourceId")
     Resource getResource(int resourceId);
 
+    @Query("SELECT * FROM resource_table WHERE workunit_id = :workunitId")
+    List<Resource> getAllWorkUnitResources(int workunitId);
+
     @Insert
     void insertResource(Resource resource);
 

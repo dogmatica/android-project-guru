@@ -87,7 +87,7 @@ public class PhaseDetail extends AppCompatActivity {
             phaseEndTextView.setText(tempEnd);
             phaseTitleTextView.setText(selectedPhase.getPhase_name());
             } else {
-            Log.d(PhaseDetail.LOG_TAG, "selected term is null");
+            Log.d(PhaseDetail.LOG_TAG, "selected Phase is null");
             selectedPhase = new Phase();
         }
     }
