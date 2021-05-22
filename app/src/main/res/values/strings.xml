@@ -6,4 +6,16 @@
     values-round/strings.xml for round devices.
     -->
     <string name="hello_world">Hello Square World!</string>
+
+    <string-array name="statuses">
+        <item>In Progress</item>
+        <item>Completed</item>
+        <item>Planned</item>
+    </string-array>
+
+    <string-array name="types">
+        <item>Dedicated</item>
+        <item>Shared</item>
+    </string-array>
+
 </resources>

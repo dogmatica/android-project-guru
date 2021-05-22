@@ -1,16 +1,84 @@
 package com.example.projectguru.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projectguru.R;
+import com.example.projectguru.data.MainDatabase;
+import com.example.projectguru.data.Phase;
+import com.example.projectguru.data.Project;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class PhaseEdit extends AppCompatActivity {
+
+    public static String LOG_TAG = "PhaseEditActivityLog";
+    MainDatabase db;
+    EditText phaseNamePlainText;
+    EditText phaseStartDate;
+    EditText phaseEndDate;
+    Spinner spinner;
+    FloatingActionButton phaseSaveButton;
+    int projectId;
+    int phaseId;
+    SimpleDateFormat formatter;
+    Intent intent;
+    Project selectedProject;
+    Phase selectedPhase;
+    Date newStartDate;
+    Date newEndDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phase_edit);
+        setTitle("Add or Edit Phase");
+        phaseNamePlainText = findViewById(R.id.phaseNamePlainText);
+        phaseStartDate = findViewById(R.id.phaseStartDate);
+        phaseEndDate = findViewById(R.id.phaseEndDate);
+        spinner = findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.statuses, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+        phaseSaveButton = findViewById(R.id.projectSaveButton);
+        db = MainDatabase.getInstance(getApplicationContext());
+        intent = getIntent();
+        projectId = intent.getIntExtra("projectId", -1);
+        phaseId = intent.getIntExtra("phaseId", -1);
+        selectedProject = db.projectDao().getProject(projectId);
+        selectedPhase = db.phaseDao().getPhase(projectId, phaseId);
+        formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+
+        //Query the database and update current layout with appropriate data:
+
+        updateViews();
+    }
+
+    //Query the database and update current layout with appropriate data:
+
+    private void updateViews() {
+        if (selectedPhase != null) {
+            Log.d(PhaseEdit.LOG_TAG, "selected Phase is not null");
+            Date startDate = selectedPhase.getPhase_start();
+            Date endDate = selectedPhase.getPhase_end();
+            String tempStart = formatter.format(startDate);
+            String tempEnd = formatter.format(endDate);
+            phaseStartDate.setText(tempStart);
+            phaseEndDate.setText(tempEnd);
+            phaseNamePlainText.setText(selectedPhase.getPhase_name());
+        } else {
+            Log.d(PhaseEdit.LOG_TAG, "selected Phase is null");
+            selectedPhase = new Phase();
+        }
     }
 }

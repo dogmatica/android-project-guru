@@ -33,8 +33,6 @@ public class WorkUnit {
     private int phase_id_fk;
     @ColumnInfo(name = "workunit_title")
     private String workUnit_title;
-    @ColumnInfo(name = "workunit_type")
-    private String workUnit_type;
     @ColumnInfo(name = "workunit_start")
     private Date workUnit_start;
     @ColumnInfo(name = "workunit_end")
@@ -58,17 +56,13 @@ public class WorkUnit {
 
     public void setWorkUnit_title(String workUnit_title)  {this.workUnit_title = workUnit_title;}
 
-    public String getWorkUnit_type() { return workUnit_type;}
-
-    public void setWorkUnit_type(String workUnit_type)  {this.workUnit_type = workUnit_type;}
-
     public Date getWorkUnit_start() { return workUnit_start;}
 
     public void setWorkUnit_start(Date workUnit_start)  {this.workUnit_start = workUnit_start;}
 
     public Date getWorkUnit_end() { return workUnit_end;}
 
-    public void setWorkUnit_goal(Date workUnit_end)  {this.workUnit_end = workUnit_end;}
+    public void setWorkUnit_end(Date workUnit_end)  {this.workUnit_end = workUnit_end;}
 
     public String getWorkUnit_status() { return workUnit_status; }
 

@@ -2,11 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/boxInsetLayout9"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightgrey"
-    tools:context=".ui.WorkUnitEdit">
+    tools:context=".ui.ResourceEdit">
 
     <TextView
         android:id="@+id/textView2"
@@ -15,7 +14,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="90dp"
         android:fontFamily="sans-serif-black"
-        android:text="Work Unit Name"
+        android:text="Resource Name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +25,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="45dp"
         android:fontFamily="sans-serif-black"
-        android:text="Start Date"
+        android:text="Resource Phone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -37,7 +36,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="45dp"
         android:fontFamily="sans-serif-black"
-        android:text="End Date"
+        android:text="Resource Email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -48,12 +47,12 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="45dp"
         android:fontFamily="sans-serif-black"
-        android:text="Status"
+        android:text="Type"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/workUnitSaveButton"
+        android:id="@+id/resourceSaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -64,31 +63,31 @@
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <EditText
-        android:id="@+id/workUnitStartDate"
+        android:id="@+id/resourcePhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="45dp"
         android:editable="true"
         android:ems="10"
-        android:inputType="date"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/workUnitNamePlainText" />
+        app:layout_constraintTop_toBottomOf="@+id/resourceNamePlainText" />
 
     <EditText
-        android:id="@+id/workUnitEndDate"
+        android:id="@+id/resourceEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="45dp"
         android:editable="true"
         android:ems="10"
-        android:inputType="date"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/workUnitStartDate" />
+        app:layout_constraintTop_toBottomOf="@+id/resourcePhone" />
 
     <EditText
-        android:id="@+id/workUnitNamePlainText"
+        android:id="@+id/resourceNamePlainText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
@@ -107,6 +106,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="45dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/workUnitEndDate" />
+        app:layout_constraintTop_toBottomOf="@+id/resourceEmail" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
