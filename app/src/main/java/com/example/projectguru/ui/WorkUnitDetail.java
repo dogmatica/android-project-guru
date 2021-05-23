@@ -3,11 +3,14 @@ package com.example.projectguru.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projectguru.R;
@@ -69,6 +72,51 @@ public class WorkUnitDetail extends AppCompatActivity {
 
         updateViews();
         updateList();
+
+        editWorkUnitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), WorkUnitEdit.class);
+                intent.putExtra("projectId", projectId);
+                intent.putExtra("phaseId", phaseId);
+                intent.putExtra("workUnitId", workUnitId);
+                startActivity(intent);
+            }
+        });
+
+        deleteWorkUnitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog dialog = new AlertDialog.Builder(WorkUnitDetail.this).setTitle("Confirm").setMessage("Delete Work Unit?")
+                        .setPositiveButton("Ok", null).setNegativeButton("Cancel", null).show();
+                Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String workUnitName = selectedWorkUnit.getWorkUnit_title();
+                        db.workUnitDao().deleteWorkUnit(workUnitId);
+                        Toast.makeText(getApplicationContext(), "Work Unit " + workUnitName + " was deleted.", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getApplicationContext(), PhaseDetail.class);
+                        intent.putExtra("projectId", projectId);
+                        intent.putExtra("phaseId", phaseId);
+                        startActivity(intent);
+                    }
+                });
+            }
+        });
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), WorkUnitNote.class);
+                intent.putExtra("projectId", projectId);
+                intent.putExtra("phaseId", phaseId);
+                intent.putExtra("workUnitId", workUnitId);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     //Query the database and update current layout with appropriate data:

@@ -3,11 +3,15 @@ package com.example.projectguru.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projectguru.R;
@@ -18,6 +22,7 @@ import com.example.projectguru.data.WorkUnit;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -72,6 +77,85 @@ public class PhaseDetail extends AppCompatActivity {
 
         updateViews();
         updateList();
+
+        workUnitList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Loading the term detail view, passing variable termId:
+                Intent intent = new Intent(getApplicationContext(), WorkUnitDetail.class);
+                int workUnitId;
+                List<WorkUnit> workUnitsList = db.workUnitDao().getPhaseWorkUnitList(phaseId);
+                workUnitId = workUnitsList.get(position).getWorkUnit_id();
+                intent.putExtra("projectId", projectId);
+                intent.putExtra("phaseId", phaseId);
+                intent.putExtra("workUnitId", workUnitId);
+                startActivity(intent);
+            }
+        });
+
+        editPhaseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), PhaseEdit.class);
+                intent.putExtra("projectId", projectId);
+                intent.putExtra("phaseId", phaseId);
+                startActivity(intent);
+            }
+        });
+
+        addPhaseWorkUnitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), WorkUnitEdit.class);
+                Calendar calendar = Calendar.getInstance();
+                int dbCount = db.workUnitDao().getAllWorkUnits().size() + 1;
+                WorkUnit tempWorkUnit = new WorkUnit();
+                String tempWorkUnitName = "New Work Unit " + dbCount;
+                tempWorkUnit.setWorkUnit_title(tempWorkUnitName);
+                tempWorkUnit.setWorkUnit_start(calendar.getTime());
+                tempWorkUnit.setWorkUnit_end(calendar.getTime());
+                tempWorkUnit.setWorkUnit_status("Planned");
+                tempWorkUnit.setWorkUnit_notes("Notes go here.");
+                tempWorkUnit.setPhase_id_fk(phaseId);
+                db.workUnitDao().insertWorkUnit(tempWorkUnit);
+                tempWorkUnit = db.workUnitDao().getWorkUnitByTitle(tempWorkUnitName);
+                int workUnitId = tempWorkUnit.getWorkUnit_id();
+                intent.putExtra("projectId", projectId);
+                intent.putExtra("phaseId", phaseId);
+                intent.putExtra("workUnitId", workUnitId);
+                startActivity(intent);
+            }
+        });
+
+        deletePhaseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog dialog = new AlertDialog.Builder(PhaseDetail.this).setTitle("Confirm").setMessage("Delete Phase?")
+                        .setPositiveButton("Ok", null).setNegativeButton("Cancel", null).show();
+                Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                positiveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String phaseName = selectedPhase.getPhase_name();
+                        db.phaseDao().deletePhase(phaseId);
+                        Toast.makeText(getApplicationContext(), "Phase " + phaseName + " was deleted.", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getApplicationContext(), ProjectDetail.class);
+                        intent.putExtra("projectId", projectId);
+                        startActivity(intent);
+                    }
+                });
+            }
+        });
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), PhaseNote.class);
+                intent.putExtra("projectId", projectId);
+                intent.putExtra("phaseId", phaseId);
+                startActivity(intent);
+            }
+        });
     }
 
     //Query the database and update current layout with appropriate data:

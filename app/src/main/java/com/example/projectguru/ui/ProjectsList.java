@@ -45,10 +45,10 @@ public class ProjectsList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Loading the term detail view, passing variable termId:
                 Intent intent = new Intent(getApplicationContext(), ProjectDetail.class);
-                int project_id;
+                int projectId;
                 List<Project> projectsList = db.projectDao().getProjectList();
-                project_id = projectsList.get(position).getProject_id();
-                intent.putExtra("termId", project_id);
+                projectId = projectsList.get(position).getProject_id();
+                intent.putExtra("projectId", projectId);
                 startActivity(intent);
             }
         });
@@ -65,15 +65,15 @@ public class ProjectsList extends AppCompatActivity {
                 Calendar calendar = Calendar.getInstance();
                 int dbCount = db.projectDao().getProjectList().size() + 1;
                 Project tempProject = new Project();
-                String tempTermName = "New Term " + dbCount;
-                tempProject.setProject_name(tempTermName);
+                String tempProjectName = "New Project " + dbCount;
+                tempProject.setProject_name(tempProjectName);
                 tempProject.setProject_status("Planned");
                 tempProject.setProject_start(calendar.getTime());
                 tempProject.setProject_end(calendar.getTime());
                 db.projectDao().insertProject(tempProject);
-                tempProject = db.projectDao().getProjectByName(tempTermName);
+                tempProject = db.projectDao().getProjectByName(tempProjectName);
                 projectId = tempProject.getProject_id();
-                intent.putExtra("termId", projectId);
+                intent.putExtra("projectId", projectId);
                 startActivity(intent);
             }
         });

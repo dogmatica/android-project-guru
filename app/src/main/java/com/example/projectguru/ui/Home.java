@@ -1,7 +1,9 @@
 package com.example.projectguru.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -57,6 +59,16 @@ public class Home extends AppCompatActivity {
 
         updateViews();
 
+        //When the View All Terms button is pressed:
+
+        goButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ProjectsList.class);
+                startActivity(intent);
+            }
+        });
+
         //Layout and set established for programmatic display of ui elements
 
         ConstraintLayout myLayout = findViewById(R.id.homePageConstraintLayout);
@@ -105,6 +117,8 @@ public class Home extends AppCompatActivity {
             nukeDatabase.nuke(getApplicationContext());
             updateViews();
         });
+
+
 
     }
 

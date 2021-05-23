@@ -3,6 +3,7 @@ package com.example.projectguru.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -20,7 +21,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class WorkUnitEdit extends AppCompatActivity {
+public class WorkUnitEdit extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     public static String LOG_TAG = "WorkUnitEditActivityLog";
     MainDatabase db;
@@ -52,7 +53,7 @@ public class WorkUnitEdit extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.statuses, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+        spinner.setOnItemSelectedListener(this);
         workUnitSaveButton = findViewById(R.id.projectSaveButton);
         db = MainDatabase.getInstance(getApplicationContext());
         intent = getIntent();
@@ -85,5 +86,15 @@ public class WorkUnitEdit extends AppCompatActivity {
             Log.d(WorkUnitEdit.LOG_TAG, "selected WorkUnit is null");
             selectedWorkUnit = new WorkUnit();
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

@@ -3,6 +3,7 @@ package com.example.projectguru.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,6 +43,18 @@ public class PhaseNoteEdit extends AppCompatActivity {
         //Query the database and update current layout with appropriate data:
 
         updateViews();
+
+        phaseNoteSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedPhase.setPhase_notes(String.valueOf(phaseNoteEditText.getText()));
+                db.phaseDao().updatePhase(selectedPhase);
+                Intent intent = new Intent(getApplicationContext(), PhaseDetail.class);
+                intent.putExtra("projectId", projectId);
+                intent.putExtra("phaseId", phaseId);
+                startActivity(intent);
+            }
+        });
     }
 
     //Query the database and update current layout with appropriate data:

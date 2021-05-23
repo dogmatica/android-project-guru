@@ -3,6 +3,7 @@ package com.example.projectguru.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,6 +47,19 @@ public class WorkUnitNoteEdit extends AppCompatActivity {
         //Query the database and update current layout with appropriate data:
 
         updateViews();
+
+        workUnitNoteSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedWorkUnit.setWorkUnit_notes(String.valueOf(workUnitNoteEditText.getText()));
+                db.workUnitDao().updateWorkUnit(selectedWorkUnit);
+                Intent intent = new Intent(getApplicationContext(), WorkUnitDetail.class);
+                intent.putExtra("projectId", projectId);
+                intent.putExtra("phaseId", phaseId);
+                intent.putExtra("workUnitId", workUnitId);
+                startActivity(intent);
+            }
+        });
     }
 
     //Query the database and update current layout with appropriate data:
