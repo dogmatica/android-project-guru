@@ -12,8 +12,8 @@
         android:id="@+id/addPhaseWorkUnitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="65dp"
         android:clickable="true"
         android:src="@android:drawable/ic_input_add"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,13 +22,26 @@
     <ListView
         android:id="@+id/workUnitList"
         android:layout_width="276dp"
-        android:layout_height="329dp"
+        android:layout_height="114dp"
         android:layout_marginStart="65dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="65dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/endDateTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/phaseWorkUnitTextView" />
+
+    <TextView
+        android:id="@+id/phaseWorkUnitTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="125dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Work Units"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editPhaseButton" />
 
     <TextView
         android:id="@+id/phaseTitleTextView"
@@ -67,6 +80,17 @@
         app:layout_constraintTop_toBottomOf="@+id/startDateTextView" />
 
     <TextView
+        android:id="@+id/statusTextView"
+        android:layout_width="91dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Status"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/endDateTextView" />
+
+    <TextView
         android:id="@+id/phaseStartTextView"
         android:layout_width="91dp"
         android:layout_height="19dp"
@@ -90,25 +114,51 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phaseStartTextView" />
 
+    <TextView
+        android:id="@+id/phaseStatusTextView"
+        android:layout_width="91dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="65dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Phase Status"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phaseEndTextView" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/editPhaseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="65dp"
         android:clickable="true"
-        app:layout_constraintEnd_toStartOf="@+id/addPhaseWorkUnitButton"
-        app:layout_constraintTop_toBottomOf="@+id/workUnitList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phaseStatusTextView"
         app:srcCompat="@android:drawable/ic_menu_edit" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/deletePhaseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="10dp"
         android:clickable="true"
         app:layout_constraintEnd_toStartOf="@+id/editPhaseButton"
-        app:layout_constraintTop_toBottomOf="@+id/workUnitList"
+        app:layout_constraintTop_toBottomOf="@+id/phaseStatusTextView"
         app:srcCompat="@android:drawable/ic_delete" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="25dp"
+        android:text="View Note"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addPhaseWorkUnitButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
