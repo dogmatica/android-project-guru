@@ -33,6 +33,7 @@ public class PhaseDetail extends AppCompatActivity {
     TextView phaseTitleTextView;
     TextView phaseStartTextView;
     TextView phaseEndTextView;
+    TextView phaseStatusTextView;
     FloatingActionButton editPhaseButton;
     ListView workUnitList;
     FloatingActionButton addPhaseWorkUnitButton;
@@ -60,6 +61,7 @@ public class PhaseDetail extends AppCompatActivity {
         phaseTitleTextView = findViewById(R.id.phaseTitleTextView);
         phaseStartTextView = findViewById(R.id.phaseStartTextView);
         phaseEndTextView = findViewById(R.id.phaseEndTextView);
+        phaseStatusTextView = findViewById(R.id.phaseStatusTextView);
         workUnitList = findViewById(R.id.workUnitList);
         button2 = findViewById(R.id.button2);
         editPhaseButton = findViewById(R.id.editPhaseButton);
@@ -170,6 +172,7 @@ public class PhaseDetail extends AppCompatActivity {
             phaseStartTextView.setText(tempStart);
             phaseEndTextView.setText(tempEnd);
             phaseTitleTextView.setText(selectedPhase.getPhase_name());
+            phaseStatusTextView.setText(selectedPhase.getPhase_status());
             } else {
             Log.d(PhaseDetail.LOG_TAG, "selected Phase is null");
             selectedPhase = new Phase();
