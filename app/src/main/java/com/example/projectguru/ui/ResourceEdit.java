@@ -51,6 +51,27 @@ public class ResourceEdit extends AppCompatActivity implements AdapterView.OnIte
         //Query the database and update current layout with appropriate data:
 
         updateViews();
+
+        resourceSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Gathering field entries and inserting into Resource table
+                try {
+                    //First the Resource is created and inserted
+                    Resource newResource = new Resource();
+                    newResource.setResource_id(resourceId);
+                    newResource.setResource_name(String.valueOf(resourceNamePlainText.getText()));
+                    newResource.setResource_phone(String.valueOf(resourcePhone.getText()));
+                    newResource.setResource_email(String.valueOf(resourceEmail.getText()));
+                    newResource.setResource_type(String.valueOf(spinner.getSelectedItem()));
+                    db.resourceDao().updateResource(newResource);
+                    Intent intent = new Intent(getApplicationContext(), Home.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     //Query the database and update current layout with appropriate data:

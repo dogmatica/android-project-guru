@@ -68,6 +68,33 @@ public class WorkUnitEdit extends AppCompatActivity implements AdapterView.OnIte
         //Query the database and update current layout with appropriate data:
 
         updateViews();
+
+        workUnitSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Gathering field entries and inserting into workunit table
+                try {
+                    //First the workunit is created and inserted
+                    WorkUnit newWorkUnit = new WorkUnit();
+                    newStartDate = formatter.parse(String.valueOf(workUnitStartDate.getText()));
+                    newEndDate = formatter.parse(String.valueOf(workUnitEndDate.getText()));
+                    newWorkUnit.setWorkUnit_id(workUnitId);
+                    newWorkUnit.setPhase_id_fk(phaseId);
+                    newWorkUnit.setWorkUnit_title(String.valueOf(workUnitNamePlainText.getText()));
+                    newWorkUnit.setWorkUnit_start(newStartDate);
+                    newWorkUnit.setWorkUnit_end(newEndDate);
+                    newWorkUnit.setWorkUnit_status(String.valueOf(spinner.getSelectedItem()));
+                    db.workUnitDao().updateWorkUnit(newWorkUnit);
+                    Intent intent = new Intent(getApplicationContext(), PhaseDetail.class);
+                    intent.putExtra("projectId", projectId);
+                    intent.putExtra("phaseId", phaseId);
+                    intent.putExtra("workUnitId", workUnitId);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     //Query the database and update current layout with appropriate data:
