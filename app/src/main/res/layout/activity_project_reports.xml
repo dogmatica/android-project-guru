@@ -1,55 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.ProjectReports"
-    android:stretchColumns="1,2,3,4"
-    android:layout_margin="8dp"
     android:background="@color/lightgrey">
 
-        <TableRow>
-
-            <TextView
-                android:text="Project Name"
-                android:padding="10dp"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:layout_column="1"/>
-
-            <TextView
-                android:text="Status"
-                android:padding="10dp"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:layout_column="1"/>
-
-            <TextView
-                android:text="Start"
-                android:padding="10dp"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:layout_column="1"/>
-
-            <TextView
-                android:text="End"
-                android:padding="10dp"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:layout_column="1"/>
-
-        </TableRow>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/projectRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="545dp" />
 
 
-</TableLayout>
+
+</RelativeLayout>
 

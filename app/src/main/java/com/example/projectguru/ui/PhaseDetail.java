@@ -86,6 +86,7 @@ public class PhaseDetail extends AppCompatActivity {
                 int requestCode = (int) System.currentTimeMillis();
                 Date alertDate = selectedPhase.getPhase_start();
                 String tempAlertDate = formatter.format(alertDate);
+                Log.d(PhaseDetail.LOG_TAG, "Current Alert Date is " + tempAlertDate);
                 Intent intent2 = new Intent(this, AlertReceiver.class);
                 intent2.putExtra("title", selectedPhase.getPhase_name());
                 intent2.putExtra("message", "Start date for " + selectedPhase.getPhase_name() + " has arrived: " + tempAlertDate);

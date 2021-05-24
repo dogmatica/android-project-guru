@@ -79,7 +79,7 @@ public class PhaseEdit extends AppCompatActivity implements AdapterView.OnItemSe
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-        phaseSaveButton = findViewById(R.id.projectSaveButton);
+        phaseSaveButton = findViewById(R.id.phaseSaveButton);
         db = MainDatabase.getInstance(getApplicationContext());
         intent = getIntent();
         projectId = intent.getIntExtra("projectId", -1);

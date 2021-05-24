@@ -5,9 +5,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.ContextWrapper;
-import android.os.Build;
 
-import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
 import com.example.projectguru.R;
@@ -18,13 +16,11 @@ public class NotificationHelper extends ContextWrapper {
     public static final String channel1Name = "Channel 1";
     private NotificationManager nManager;
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public NotificationHelper(Context base) {
         super(base);
         createChannels();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public void createChannels() {
         NotificationChannel channel1 = new NotificationChannel(channel1ID, channel1Name, NotificationManager.IMPORTANCE_DEFAULT);
         channel1.enableLights(true);
