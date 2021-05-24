@@ -3,9 +3,13 @@ package com.example.projectguru.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projectguru.R;
@@ -28,6 +32,30 @@ public class WorkUnitNoteEdit extends AppCompatActivity {
     WorkUnit selectedWorkUnit;
     EditText workUnitNoteEditText;
     FloatingActionButton workUnitNoteSaveButton;
+
+    //Inflation of hidden menu on action bar
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_home, menu);
+        return true;
+    }
+
+    //Actions related to hidden menu selection
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            //When "Home" is selected:
+            case R.id.home:
+                Intent intent = new Intent(getApplicationContext(), Home.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

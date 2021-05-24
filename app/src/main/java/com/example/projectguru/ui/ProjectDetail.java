@@ -3,6 +3,9 @@ package com.example.projectguru.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -42,6 +46,37 @@ public class ProjectDetail extends AppCompatActivity {
     int projectId;
     Project selectedProject;
     SimpleDateFormat formatter;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateList();
+        updateViews();
+    }
+
+    //Inflation of hidden menu on action bar
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_home, menu);
+        return true;
+    }
+
+    //Actions related to hidden menu selection
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            //When "Home" is selected:
+            case R.id.home:
+                Intent intent = new Intent(getApplicationContext(), Home.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

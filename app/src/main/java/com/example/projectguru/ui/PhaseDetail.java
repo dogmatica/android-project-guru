@@ -1,8 +1,14 @@
 package com.example.projectguru.ui;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +26,8 @@ import com.example.projectguru.data.MainDatabase;
 import com.example.projectguru.data.Phase;
 import com.example.projectguru.data.Project;
 import com.example.projectguru.data.WorkUnit;
+import com.example.projectguru.tools.AlertReceiver;
+import com.example.projectguru.tools.Converters;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
@@ -51,6 +60,41 @@ public class PhaseDetail extends AppCompatActivity {
         super.onResume();
         updateList();
         updateViews();
+    }
+
+    //Inflation of hidden menu on action bar
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_alert, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //The hidden menu in the CourseDetail view provides additional options:
+        switch (item.getItemId()) {
+            //When "Home" is selected:
+            case R.id.home:
+                Intent intent = new Intent(getApplicationContext(), Home.class);
+                startActivity(intent);
+                return true;
+            //When Alert is selected:
+            case R.id.subitem1:
+                //A unique value for the request code is generated based on the current time in milliseconds
+                int requestCode = (int) System.currentTimeMillis();
+                Date alertDate = selectedPhase.getPhase_start();
+                String tempAlertDate = formatter.format(alertDate);
+                Intent intent2 = new Intent(this, AlertReceiver.class);
+                intent2.putExtra("title", selectedPhase.getPhase_name());
+                intent2.putExtra("message", "Start date for " + selectedPhase.getPhase_name() + " has arrived: " + tempAlertDate);
+                PendingIntent sender = PendingIntent.getBroadcast(this, requestCode, intent2, 0);
+                AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+                alarmManager.setExact(AlarmManager.RTC_WAKEUP, Converters.dateToTimestamp(alertDate), sender);
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
