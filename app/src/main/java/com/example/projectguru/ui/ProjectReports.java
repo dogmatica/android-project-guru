@@ -13,13 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectguru.R;
 import com.example.projectguru.data.MainDatabase;
+import com.example.projectguru.data.Project;
 import com.example.projectguru.tools.ProjectAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProjectReports extends AppCompatActivity {
 
-    RecyclerView projectRecyclerView;
+    RecyclerView rvProjects;
     ProjectAdapter adapter;
     MainDatabase db;
+    List<Project> projectList = new ArrayList<>();
 
     //Inflation of hidden menu on action bar
 
@@ -49,17 +54,22 @@ public class ProjectReports extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_reports);
-
-        projectRecyclerView = findViewById(R.id.projectRecyclerView);
-        setRecyclerView();
+        db = MainDatabase.getInstance(getApplicationContext());
+        projectList = db.projectDao().getProjectList();
+        rvProjects = findViewById(R.id.rvProjects);
+        rvProjects.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        rvProjects.setLayoutManager(layoutManager);
+        ProjectAdapter projectAdapter = new ProjectAdapter(this, projectList, rvProjects);
+        rvProjects.setAdapter(projectAdapter);
     }
-
+/*
     private void setRecyclerView() {
-        projectRecyclerView.setHasFixedSize(true);
-        projectRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ProjectAdapter(this, db.projectDao().getProjectList());
-        projectRecyclerView.setAdapter(adapter);
-    }
+        rvProjects.setHasFixedSize(true);
+        rvProjects.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new ProjectAdapter(this, db.projectDao().getAllProjects());
+        rvProjects.setAdapter(adapter);
+    }*/
 
 
 }
