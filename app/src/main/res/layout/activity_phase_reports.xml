@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ProjectReports"
+    tools:context=".ui.PhaseReports"
     android:background="@color/lightgrey">
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvProjects"
+        android:id="@+id/rvPhases"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
 </LinearLayout>
-

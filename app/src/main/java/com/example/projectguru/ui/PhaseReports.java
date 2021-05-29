@@ -13,17 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectguru.R;
 import com.example.projectguru.data.MainDatabase;
-import com.example.projectguru.data.Project;
-import com.example.projectguru.tools.ProjectAdapter;
+import com.example.projectguru.data.Phase;
+import com.example.projectguru.tools.PhaseAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProjectReports extends AppCompatActivity {
+public class PhaseReports extends AppCompatActivity {
 
-    RecyclerView rvProjects;
+    RecyclerView rvPhases;
     MainDatabase db;
-    List<Project> projectList = new ArrayList<>();
+    List<Phase> phaseList = new ArrayList<>();
 
     //Inflation of hidden menu on action bar
 
@@ -52,23 +52,14 @@ public class ProjectReports extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_project_reports);
+        setContentView(R.layout.activity_phase_reports);
         db = MainDatabase.getInstance(getApplicationContext());
-        projectList = db.projectDao().getProjectList();
-        rvProjects = findViewById(R.id.rvProjects);
-        rvProjects.setHasFixedSize(true);
+        phaseList = db.phaseDao().getAllPhases();
+        rvPhases = findViewById(R.id.rvPhases);
+        rvPhases.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        rvProjects.setLayoutManager(layoutManager);
-        ProjectAdapter projectAdapter = new ProjectAdapter(this, projectList, rvProjects);
-        rvProjects.setAdapter(projectAdapter);
+        rvPhases.setLayoutManager(layoutManager);
+        PhaseAdapter phaseAdapter = new PhaseAdapter(this, phaseList, rvPhases);
+        rvPhases.setAdapter(phaseAdapter);
     }
-/*
-    private void setRecyclerView() {
-        rvProjects.setHasFixedSize(true);
-        rvProjects.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ProjectAdapter(this, db.projectDao().getAllProjects());
-        rvProjects.setAdapter(adapter);
-    }*/
-
-
 }

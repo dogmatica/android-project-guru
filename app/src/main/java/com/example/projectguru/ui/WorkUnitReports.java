@@ -13,17 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectguru.R;
 import com.example.projectguru.data.MainDatabase;
-import com.example.projectguru.data.Project;
-import com.example.projectguru.tools.ProjectAdapter;
+import com.example.projectguru.data.WorkUnit;
+import com.example.projectguru.tools.WorkUnitAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProjectReports extends AppCompatActivity {
+public class WorkUnitReports extends AppCompatActivity {
 
-    RecyclerView rvProjects;
+    RecyclerView rvWorkUnits;
     MainDatabase db;
-    List<Project> projectList = new ArrayList<>();
+    List<WorkUnit> workUnitList = new ArrayList<>();
 
     //Inflation of hidden menu on action bar
 
@@ -52,23 +52,14 @@ public class ProjectReports extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_project_reports);
+        setContentView(R.layout.activity_work_unit_reports);
         db = MainDatabase.getInstance(getApplicationContext());
-        projectList = db.projectDao().getProjectList();
-        rvProjects = findViewById(R.id.rvProjects);
-        rvProjects.setHasFixedSize(true);
+        workUnitList = db.workUnitDao().getAllWorkUnits();
+        rvWorkUnits = findViewById(R.id.rvWorkUnits);
+        rvWorkUnits.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        rvProjects.setLayoutManager(layoutManager);
-        ProjectAdapter projectAdapter = new ProjectAdapter(this, projectList, rvProjects);
-        rvProjects.setAdapter(projectAdapter);
+        rvWorkUnits.setLayoutManager(layoutManager);
+        WorkUnitAdapter workUnitAdapter = new WorkUnitAdapter(this, workUnitList, rvWorkUnits);
+        rvWorkUnits.setAdapter(workUnitAdapter);
     }
-/*
-    private void setRecyclerView() {
-        rvProjects.setHasFixedSize(true);
-        rvProjects.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ProjectAdapter(this, db.projectDao().getAllProjects());
-        rvProjects.setAdapter(adapter);
-    }*/
-
-
 }

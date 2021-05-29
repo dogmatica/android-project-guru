@@ -77,6 +77,22 @@ public class Home extends AppCompatActivity {
             }
         });
 
+        phasesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), PhaseReports.class);
+                startActivity(intent);
+            }
+        });
+
+        workUnitsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), WorkUnitReports.class);
+                startActivity(intent);
+            }
+        });
+
         //Layout and set established for programmatic display of ui elements
 
         ConstraintLayout myLayout = findViewById(R.id.homePageConstraintLayout);

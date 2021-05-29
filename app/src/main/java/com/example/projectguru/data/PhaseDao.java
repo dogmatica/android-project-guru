@@ -19,6 +19,9 @@ public interface PhaseDao {
     @Query("SELECT * FROM phase_table WHERE project_id_fk = :projectId AND phase_name = :phaseName")
     Phase getPhaseByName(int projectId, String phaseName);
 
+    @Query("SELECT * FROM phase_table WHERE phase_id = :phaseId")
+    Phase getPhaseById(int phaseId);
+
     @Query("INSERT INTO phase_table (project_id_fk, phase_name) VALUES (:projectId, \"Phase Name\"); ")
     void addPhase(int projectId);
 
