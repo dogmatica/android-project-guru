@@ -135,6 +135,17 @@ public class WorkUnitDetail extends AppCompatActivity {
             }
         });
 
+        addWorkUnitResourceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ResourceSearch.class);
+                intent.putExtra("projectId", projectId);
+                intent.putExtra("phaseId", phaseId);
+                intent.putExtra("workUnitId", workUnitId);
+                startActivity(intent);
+            }
+        });
+
         deleteWorkUnitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -5,12 +5,14 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(
         tableName = "resource_table",
         indices = {@Index(value = "workunit_id")}
 )
 
-public class Resource {
+public class Resource implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int resource_id;
     @ColumnInfo(name = "resource_name")

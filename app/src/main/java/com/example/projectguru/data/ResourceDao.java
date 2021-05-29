@@ -19,6 +19,12 @@ public interface ResourceDao {
     @Query("SELECT * FROM resource_table WHERE workunit_id = :workunitId")
     List<Resource> getAllWorkUnitResources(int workunitId);
 
+    @Query("SELECT * FROM resource_table WHERE resource_type = :resourceType")
+    List<Resource> getAllResourcesOfType(String resourceType);
+
+    @Query("SELECT * FROM resource_table WHERE instr(resource_name, :search)")
+    List<Resource> getAllResourcesNamed(String search);
+
     @Insert
     void insertResource(Resource resource);
 
