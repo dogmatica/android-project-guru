@@ -28,7 +28,7 @@
         android:layout_marginEnd="65dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/endDateTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewPhone" />
 
     <TextView
         android:id="@+id/projectTitleTextView"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/startDateTextView"
+        android:id="@+id/textViewEmail"
         android:layout_width="91dp"
         android:layout_height="19dp"
         android:layout_marginStart="65dp"
@@ -56,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/projectTitleTextView" />
 
     <TextView
-        android:id="@+id/endDateTextView"
+        android:id="@+id/textViewPhone"
         android:layout_width="91dp"
         android:layout_height="19dp"
         android:layout_marginStart="65dp"
@@ -64,7 +64,7 @@
         android:fontFamily="sans-serif-black"
         android:text="End Date"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startDateTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
 
     <TextView
         android:id="@+id/projectStartTextView"

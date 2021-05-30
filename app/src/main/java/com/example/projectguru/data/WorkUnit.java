@@ -70,5 +70,5 @@ public class WorkUnit {
 
     public String getWorkUnit_notes() { return workUnit_notes; }
 
-    public void setWorkUnit_notes(String workUnit_notes) {this.workUnit_status = workUnit_notes;}
+    public void setWorkUnit_notes(String workUnit_notes) {this.workUnit_notes = workUnit_notes;}
 }

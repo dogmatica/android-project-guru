@@ -20,6 +20,9 @@ import com.example.projectguru.data.MainDatabase;
 import com.example.projectguru.data.Resource;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.Serializable;
+import java.util.List;
+
 public class ResourceEdit extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     public static String LOG_TAG = "ResourceEditActivityLog";
@@ -93,7 +96,9 @@ public class ResourceEdit extends AppCompatActivity implements AdapterView.OnIte
                     newResource.setResource_email(String.valueOf(resourceEmail.getText()));
                     newResource.setResource_type(String.valueOf(spinner.getSelectedItem()));
                     db.resourceDao().updateResource(newResource);
-                    Intent intent = new Intent(getApplicationContext(), Home.class);
+                    Intent intent = new Intent(getApplicationContext(), ResourceManage.class);
+                    List<Resource> resourceList = db.resourceDao().getResourceList();
+                    intent.putExtra("resourceList", (Serializable) resourceList);
                     startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();

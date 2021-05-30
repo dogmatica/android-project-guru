@@ -27,12 +27,24 @@
         android:layout_width="218dp"
         android:layout_height="41dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="32dp"
         android:text="View All Projects"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/planCountTextView" />
+
+    <Button
+        android:id="@+id/manageResourcesButton"
+        android:layout_width="218dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:text="Manage Resources"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goButton" />
 
 
     <TextView
@@ -129,7 +141,7 @@
         android:text="Reports"
         android:textSize="36sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goButton" />
+        app:layout_constraintTop_toBottomOf="@+id/manageResourcesButton" />
 
     <Button
         android:id="@+id/projectsButton"

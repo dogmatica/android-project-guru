@@ -16,6 +16,9 @@ public interface ResourceDao {
     @Query("SELECT * FROM resource_table WHERE resource_id = :resourceId")
     Resource getResource(int resourceId);
 
+    @Query("SELECT * FROM resource_table WHERE resource_name = :resourceName")
+    Resource getResourceByName(String resourceName);
+
     @Query("SELECT * FROM resource_table WHERE workunit_id = :workunitId")
     List<Resource> getAllWorkUnitResources(int workunitId);
 
@@ -24,6 +27,9 @@ public interface ResourceDao {
 
     @Query("SELECT * FROM resource_table WHERE instr(resource_name, :search)")
     List<Resource> getAllResourcesNamed(String search);
+
+    @Query("DELETE FROM resource_table WHERE resource_id = :resourceId")
+    void deleteResource(int resourceId);
 
     @Insert
     void insertResource(Resource resource);

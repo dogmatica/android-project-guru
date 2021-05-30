@@ -16,7 +16,9 @@ import com.example.projectguru.data.MainDatabase;
 import com.example.projectguru.data.NukeDatabase;
 import com.example.projectguru.data.PopulateDatabase;
 import com.example.projectguru.data.Project;
+import com.example.projectguru.data.Resource;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -29,6 +31,7 @@ public class Home extends AppCompatActivity {
     TextView completedCountTextView;
     TextView planCountTextView;
     Button goButton;
+    Button manageResourcesButton;
     Button projectsButton;
     Button phasesButton;
     Button workUnitsButton;
@@ -49,6 +52,7 @@ public class Home extends AppCompatActivity {
         completedCountTextView = findViewById(R.id.completedCountTextView);
         planCountTextView = findViewById(R.id.planCountTextView);
         goButton = findViewById(R.id.goButton);
+        manageResourcesButton = findViewById(R.id.manageResourcesButton);
         projectsButton = findViewById(R.id.projectsButton);
         phasesButton = findViewById(R.id.phasesButton);
         workUnitsButton = findViewById(R.id.workUnitsButton);
@@ -65,6 +69,16 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ProjectsList.class);
+                startActivity(intent);
+            }
+        });
+
+        manageResourcesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                List<Resource> resourceList = db.resourceDao().getResourceList();
+                Intent intent = new Intent(getApplicationContext(), ResourceManage.class);
+                intent.putExtra("resourceList", (Serializable) resourceList);
                 startActivity(intent);
             }
         });
