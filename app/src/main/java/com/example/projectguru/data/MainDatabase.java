@@ -10,7 +10,7 @@ import androidx.room.TypeConverters;
 
 import com.example.projectguru.tools.Converters;
 
-@Database(entities = {Project.class, Phase.class, WorkUnit.class, Resource.class}, exportSchema = false, version = 5)
+@Database(entities = {User.class, Project.class, Phase.class, WorkUnit.class, Resource.class}, exportSchema = false, version = 6)
 @TypeConverters({Converters.class})
 public abstract class MainDatabase extends RoomDatabase {
     private static final String DB_NAME = "main_db";
@@ -27,6 +27,7 @@ public abstract class MainDatabase extends RoomDatabase {
     public abstract PhaseDao phaseDao();
     public abstract WorkUnitDao workUnitDao();
     public abstract ResourceDao resourceDao();
+    public abstract UserDao userDao();
 
 
 

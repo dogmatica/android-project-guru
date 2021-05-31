@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projectguru.R;
 import com.example.projectguru.data.MainDatabase;
+import com.example.projectguru.data.User;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,8 +30,14 @@ public class MainActivity extends AppCompatActivity {
         beginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Home.class);
-                startActivity(intent);
+                List<User> userList = db.userDao().getAllUsers();
+                if (userList != null && userList.size() > 0) {
+                    Intent intent = new Intent(getApplicationContext(), PinEntry.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(getApplicationContext(), PinSet.class);
+                    startActivity(intent);
+                }
             }
         });
     }

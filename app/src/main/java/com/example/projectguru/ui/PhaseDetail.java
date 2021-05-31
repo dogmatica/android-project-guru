@@ -103,10 +103,10 @@ public class PhaseDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phase_detail);
         setTitle("Phase Details");
-        phaseTitleTextView = findViewById(R.id.resourceNameTextView);
-        phaseStartTextView = findViewById(R.id.textViewResourceEmail);
-        phaseEndTextView = findViewById(R.id.textViewResourcePhone);
-        phaseStatusTextView = findViewById(R.id.textViewResourceType);
+        phaseTitleTextView = findViewById(R.id.phaseTitleTextView);
+        phaseStartTextView = findViewById(R.id.phaseStartTextView);
+        phaseEndTextView = findViewById(R.id.phaseEndTextView);
+        phaseStatusTextView = findViewById(R.id.phaseStatusTextView);
         workUnitList = findViewById(R.id.workUnitList);
         button2 = findViewById(R.id.button2);
         editPhaseButton = findViewById(R.id.editResourceButton);

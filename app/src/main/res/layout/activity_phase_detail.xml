@@ -41,15 +41,15 @@
         android:text="Work Units"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editResourceButton" />
+        app:layout_constraintTop_toBottomOf="@+id/editPhaseButton" />
 
     <TextView
-        android:id="@+id/resourceNameTextView"
-        android:layout_width="113dp"
+        android:id="@+id/phaseTitleTextView"
+        android:layout_width="250dp"
         android:layout_height="25dp"
-        android:layout_marginStart="145dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="35dp"
-        android:layout_marginEnd="145dp"
+        android:layout_marginEnd="25dp"
         android:fontFamily="sans-serif-black"
         android:text="Phase Title"
         android:textAlignment="center"
@@ -58,7 +58,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewEmail"
+        android:id="@+id/textViewStart"
         android:layout_width="91dp"
         android:layout_height="19dp"
         android:layout_marginStart="65dp"
@@ -66,10 +66,10 @@
         android:fontFamily="sans-serif-black"
         android:text="Start Date"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resourceNameTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/phaseTitleTextView" />
 
     <TextView
-        android:id="@+id/textViewPhone"
+        android:id="@+id/textViewEnd"
         android:layout_width="91dp"
         android:layout_height="19dp"
         android:layout_marginStart="65dp"
@@ -77,10 +77,10 @@
         android:fontFamily="sans-serif-black"
         android:text="End Date"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewStart" />
 
     <TextView
-        android:id="@+id/textViewType"
+        android:id="@+id/textViewStatus"
         android:layout_width="91dp"
         android:layout_height="19dp"
         android:layout_marginStart="65dp"
@@ -88,10 +88,10 @@
         android:fontFamily="sans-serif-black"
         android:text="Status"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPhone" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEnd" />
 
     <TextView
-        android:id="@+id/textViewResourceEmail"
+        android:id="@+id/phaseStartTextView"
         android:layout_width="91dp"
         android:layout_height="19dp"
         android:layout_marginTop="15dp"
@@ -100,10 +100,10 @@
         android:text="Phase Start"
         android:textAlignment="textEnd"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resourceNameTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/phaseTitleTextView" />
 
     <TextView
-        android:id="@+id/textViewResourcePhone"
+        android:id="@+id/phaseEndTextView"
         android:layout_width="91dp"
         android:layout_height="19dp"
         android:layout_marginTop="10dp"
@@ -112,10 +112,10 @@
         android:text="Phase End"
         android:textAlignment="textEnd"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewResourceEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/phaseStartTextView" />
 
     <TextView
-        android:id="@+id/textViewResourceType"
+        android:id="@+id/phaseStatusTextView"
         android:layout_width="91dp"
         android:layout_height="19dp"
         android:layout_marginTop="10dp"
@@ -124,28 +124,28 @@
         android:text="Phase Status"
         android:textAlignment="textEnd"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewResourcePhone" />
+        app:layout_constraintTop_toBottomOf="@+id/phaseEndTextView" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/editResourceButton"
+        android:id="@+id/editPhaseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="65dp"
         android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewResourceType"
+        app:layout_constraintTop_toBottomOf="@+id/phaseStatusTextView"
         app:srcCompat="@android:drawable/ic_menu_edit" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/deleteResourceButton"
+        android:id="@+id/deletePhaseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="10dp"
         android:clickable="true"
-        app:layout_constraintEnd_toStartOf="@+id/editResourceButton"
-        app:layout_constraintTop_toBottomOf="@+id/textViewResourceType"
+        app:layout_constraintEnd_toStartOf="@+id/editPhaseButton"
+        app:layout_constraintTop_toBottomOf="@+id/phaseStatusTextView"
         app:srcCompat="@android:drawable/ic_delete" />
 
     <Button

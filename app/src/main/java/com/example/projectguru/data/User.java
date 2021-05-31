@@ -10,12 +10,14 @@ public class User {
     private int user_id;
     @ColumnInfo(name = "user_pin")
     private String user_pin;
+    @ColumnInfo(name = "salt")
+    private byte[] salt;
 
     public int getUser_id() {
         return user_id;
     }
 
-    public void setProject_id(int user_id) {
+    public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
 
@@ -25,5 +27,13 @@ public class User {
 
     public void setUser_pin(String user_pin) {
         this.user_pin = user_pin;
+    }
+
+    public byte[] getSalt() {
+        return salt;
+    }
+
+    public void setSalt(byte[] salt) {
+        this.salt = salt;
     }
 }
