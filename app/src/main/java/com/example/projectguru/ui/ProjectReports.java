@@ -16,7 +16,10 @@ import com.example.projectguru.data.MainDatabase;
 import com.example.projectguru.data.Project;
 import com.example.projectguru.tools.ProjectAdapter;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class ProjectReports extends AppCompatActivity {
@@ -24,6 +27,7 @@ public class ProjectReports extends AppCompatActivity {
     RecyclerView rvProjects;
     MainDatabase db;
     List<Project> projectList = new ArrayList<>();
+    SimpleDateFormat formatter;
 
     //Inflation of hidden menu on action bar
 
@@ -53,6 +57,11 @@ public class ProjectReports extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_reports);
+        formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+        Calendar titleCalendar = Calendar.getInstance();
+        Date timeStamp = titleCalendar.getTime();
+        String formattedStamp = formatter.format(timeStamp);
+        setTitle("Project Report " + formattedStamp);
         db = MainDatabase.getInstance(getApplicationContext());
         projectList = db.projectDao().getProjectList();
         rvProjects = findViewById(R.id.rvProjects);

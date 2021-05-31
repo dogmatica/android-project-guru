@@ -16,7 +16,10 @@ import com.example.projectguru.data.MainDatabase;
 import com.example.projectguru.data.WorkUnit;
 import com.example.projectguru.tools.WorkUnitAdapter;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class WorkUnitReports extends AppCompatActivity {
@@ -24,6 +27,7 @@ public class WorkUnitReports extends AppCompatActivity {
     RecyclerView rvWorkUnits;
     MainDatabase db;
     List<WorkUnit> workUnitList = new ArrayList<>();
+    SimpleDateFormat formatter;
 
     //Inflation of hidden menu on action bar
 
@@ -53,6 +57,11 @@ public class WorkUnitReports extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_work_unit_reports);
+        formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+        Calendar titleCalendar = Calendar.getInstance();
+        Date timeStamp = titleCalendar.getTime();
+        String formattedStamp = formatter.format(timeStamp);
+        setTitle("Work Unit Report " + formattedStamp);
         db = MainDatabase.getInstance(getApplicationContext());
         workUnitList = db.workUnitDao().getAllWorkUnits();
         rvWorkUnits = findViewById(R.id.rvWorkUnits);

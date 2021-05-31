@@ -82,7 +82,7 @@ public class ProjectDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_detail);
-        setTitle("Term Details");
+        setTitle("Project Details");
         addProjectPhaseButton = findViewById(R.id.addProjectPhaseButton);
         editProjectButton = findViewById(R.id.editProjectButton);
         deleteProjectButton = findViewById(R.id.deleteProjectButton);

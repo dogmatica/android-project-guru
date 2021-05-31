@@ -66,10 +66,10 @@ public class ResourceDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resource_detail);
         setTitle("Resource Detail");
-        resourceNameTextView = findViewById(R.id.phaseTitleTextView);
-        textViewResourceEmail = findViewById(R.id.phaseStartTextView);
-        textViewResourcePhone = findViewById(R.id.phaseEndTextView);
-        textViewResourceType = findViewById(R.id.phaseStatusTextView);
+        resourceNameTextView = findViewById(R.id.resourceNameTextView);
+        textViewResourceEmail = findViewById(R.id.textViewResourceEmail);
+        textViewResourcePhone = findViewById(R.id.textViewResourcePhone);
+        textViewResourceType = findViewById(R.id.textViewResourceType);
         editResourceButton = findViewById(R.id.editResourceButton);
         deleteResourceButton = findViewById(R.id.deleteResourceButton);
         db = MainDatabase.getInstance(getApplicationContext());

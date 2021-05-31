@@ -16,7 +16,10 @@ import com.example.projectguru.data.MainDatabase;
 import com.example.projectguru.data.Phase;
 import com.example.projectguru.tools.PhaseAdapter;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class PhaseReports extends AppCompatActivity {
@@ -24,6 +27,7 @@ public class PhaseReports extends AppCompatActivity {
     RecyclerView rvPhases;
     MainDatabase db;
     List<Phase> phaseList = new ArrayList<>();
+    SimpleDateFormat formatter;
 
     //Inflation of hidden menu on action bar
 
@@ -53,6 +57,11 @@ public class PhaseReports extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phase_reports);
+        formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+        Calendar titleCalendar = Calendar.getInstance();
+        Date timeStamp = titleCalendar.getTime();
+        String formattedStamp = formatter.format(timeStamp);
+        setTitle("Phase Report " + formattedStamp);
         db = MainDatabase.getInstance(getApplicationContext());
         phaseList = db.phaseDao().getAllPhases();
         rvPhases = findViewById(R.id.rvPhases);

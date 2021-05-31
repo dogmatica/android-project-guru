@@ -109,9 +109,9 @@ public class PhaseDetail extends AppCompatActivity {
         phaseStatusTextView = findViewById(R.id.phaseStatusTextView);
         workUnitList = findViewById(R.id.workUnitList);
         button2 = findViewById(R.id.button2);
-        editPhaseButton = findViewById(R.id.editResourceButton);
+        editPhaseButton = findViewById(R.id.editPhaseButton);
         addPhaseWorkUnitButton = findViewById(R.id.addPhaseWorkUnitButton);
-        deletePhaseButton = findViewById(R.id.deleteResourceButton);
+        deletePhaseButton = findViewById(R.id.deletePhaseButton);
         db = MainDatabase.getInstance(getApplicationContext());
         intent = getIntent();
         phaseId = intent.getIntExtra("phaseId", -1);
