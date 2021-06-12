@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -90,24 +91,31 @@ public class ProjectEdit extends AppCompatActivity implements AdapterView.OnItem
         projectSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Gathering field entries and inserting into Project table
-                try {
-                    //First the Project is created and inserted
-                    Project newProject = new Project();
-                    newStartDate = formatter.parse(String.valueOf(projectStartDate.getText()));
-                    newEndDate = formatter.parse(String.valueOf(projectEndDate.getText()));
-                    newProject.setProject_id(projectId);
-                    newProject.setProject_name(String.valueOf(projectNamePlainText.getText()));
-                    newProject.setProject_start(newStartDate);
-                    newProject.setProject_end(newEndDate);
-                    newProject.setProject_status(String.valueOf(spinner.getSelectedItem()));
-                    db.projectDao().updateProject(newProject);
-                    Intent intent = new Intent(getApplicationContext(), ProjectsList.class);
-                    intent.putExtra("projectId", projectId);
-                    startActivity(intent);
-                } catch (Exception e) {
-                    e.printStackTrace();
+                String tempName = String.valueOf(projectNamePlainText.getText());
+                int length = tempName.length();
+                if (length < 1) {
+                    Toast.makeText(getApplicationContext(), "Name cannot be blank.", Toast.LENGTH_LONG).show();
+                } else {
+                    //Gathering field entries and inserting into Project table
+                    try {
+                        //First the Project is created and inserted
+                        Project newProject = new Project();
+                        newStartDate = formatter.parse(String.valueOf(projectStartDate.getText()));
+                        newEndDate = formatter.parse(String.valueOf(projectEndDate.getText()));
+                        newProject.setProject_id(projectId);
+                        newProject.setProject_name(String.valueOf(projectNamePlainText.getText()));
+                        newProject.setProject_start(newStartDate);
+                        newProject.setProject_end(newEndDate);
+                        newProject.setProject_status(String.valueOf(spinner.getSelectedItem()));
+                        db.projectDao().updateProject(newProject);
+                        Intent intent = new Intent(getApplicationContext(), ProjectsList.class);
+                        intent.putExtra("projectId", projectId);
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
+
             }
         });
     }

@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -95,26 +96,33 @@ public class PhaseEdit extends AppCompatActivity implements AdapterView.OnItemSe
         phaseSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Gathering field entries and inserting into phase table
-                try {
-                    //First the phase is created and inserted
-                    Phase newPhase = new Phase();
-                    newStartDate = formatter.parse(String.valueOf(phaseStartDate.getText()));
-                    newEndDate = formatter.parse(String.valueOf(phaseEndDate.getText()));
-                    newPhase.setPhase_id(phaseId);
-                    newPhase.setProject_id_fk(projectId);
-                    newPhase.setPhase_name(String.valueOf(phaseNamePlainText.getText()));
-                    newPhase.setPhase_start(newStartDate);
-                    newPhase.setPhase_end(newEndDate);
-                    newPhase.setPhase_status(String.valueOf(spinner.getSelectedItem()));
-                    db.phaseDao().updatePhase(newPhase);
-                    Intent intent = new Intent(getApplicationContext(), ProjectDetail.class);
-                    intent.putExtra("projectId", projectId);
-                    intent.putExtra("phaseId", phaseId);
-                    startActivity(intent);
-                } catch (Exception e) {
-                    e.printStackTrace();
+                String tempName = String.valueOf(phaseNamePlainText.getText());
+                int length = tempName.length();
+                if (length < 1) {
+                    Toast.makeText(getApplicationContext(), "Name cannot be blank.", Toast.LENGTH_LONG).show();
+                } else {
+                    //Gathering field entries and inserting into phase table
+                    try {
+                        //First the phase is created and inserted
+                        Phase newPhase = new Phase();
+                        newStartDate = formatter.parse(String.valueOf(phaseStartDate.getText()));
+                        newEndDate = formatter.parse(String.valueOf(phaseEndDate.getText()));
+                        newPhase.setPhase_id(phaseId);
+                        newPhase.setProject_id_fk(projectId);
+                        newPhase.setPhase_name(String.valueOf(phaseNamePlainText.getText()));
+                        newPhase.setPhase_start(newStartDate);
+                        newPhase.setPhase_end(newEndDate);
+                        newPhase.setPhase_status(String.valueOf(spinner.getSelectedItem()));
+                        db.phaseDao().updatePhase(newPhase);
+                        Intent intent = new Intent(getApplicationContext(), ProjectDetail.class);
+                        intent.putExtra("projectId", projectId);
+                        intent.putExtra("phaseId", phaseId);
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
+
             }
         });
     }

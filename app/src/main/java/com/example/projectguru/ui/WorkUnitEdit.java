@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -100,27 +101,34 @@ public class WorkUnitEdit extends AppCompatActivity implements AdapterView.OnIte
         workUnitSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Gathering field entries and inserting into workunit table
-                try {
-                    //First the workunit is created and inserted
-                    WorkUnit newWorkUnit = new WorkUnit();
-                    newStartDate = formatter.parse(String.valueOf(workUnitStartDate.getText()));
-                    newEndDate = formatter.parse(String.valueOf(workUnitEndDate.getText()));
-                    newWorkUnit.setWorkUnit_id(workUnitId);
-                    newWorkUnit.setPhase_id_fk(phaseId);
-                    newWorkUnit.setWorkUnit_title(String.valueOf(workUnitNamePlainText.getText()));
-                    newWorkUnit.setWorkUnit_start(newStartDate);
-                    newWorkUnit.setWorkUnit_end(newEndDate);
-                    newWorkUnit.setWorkUnit_status(String.valueOf(spinner.getSelectedItem()));
-                    db.workUnitDao().updateWorkUnit(newWorkUnit);
-                    Intent intent = new Intent(getApplicationContext(), PhaseDetail.class);
-                    intent.putExtra("projectId", projectId);
-                    intent.putExtra("phaseId", phaseId);
-                    intent.putExtra("workUnitId", workUnitId);
-                    startActivity(intent);
-                } catch (Exception e) {
-                    e.printStackTrace();
+                String tempName = String.valueOf(workUnitNamePlainText.getText());
+                int length = tempName.length();
+                if (length < 1) {
+                    Toast.makeText(getApplicationContext(), "Name cannot be blank.", Toast.LENGTH_LONG).show();
+                } else {
+                    //Gathering field entries and inserting into workunit table
+                    try {
+                        //First the workunit is created and inserted
+                        WorkUnit newWorkUnit = new WorkUnit();
+                        newStartDate = formatter.parse(String.valueOf(workUnitStartDate.getText()));
+                        newEndDate = formatter.parse(String.valueOf(workUnitEndDate.getText()));
+                        newWorkUnit.setWorkUnit_id(workUnitId);
+                        newWorkUnit.setPhase_id_fk(phaseId);
+                        newWorkUnit.setWorkUnit_title(String.valueOf(workUnitNamePlainText.getText()));
+                        newWorkUnit.setWorkUnit_start(newStartDate);
+                        newWorkUnit.setWorkUnit_end(newEndDate);
+                        newWorkUnit.setWorkUnit_status(String.valueOf(spinner.getSelectedItem()));
+                        db.workUnitDao().updateWorkUnit(newWorkUnit);
+                        Intent intent = new Intent(getApplicationContext(), PhaseDetail.class);
+                        intent.putExtra("projectId", projectId);
+                        intent.putExtra("phaseId", phaseId);
+                        intent.putExtra("workUnitId", workUnitId);
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
+
             }
         });
     }
