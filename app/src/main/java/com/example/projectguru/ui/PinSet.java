@@ -39,7 +39,7 @@ public class PinSet extends AppCompatActivity {
             public void onClick(View view) {
                 String tempPin = String.valueOf(editTextPin.getText());
                 int length = tempPin.length();
-                if (length == 4) {
+                if (validatePin(length) == true) {
                     SecureRandom random = new SecureRandom();
                     byte[] salt = new byte[16];
                     random.nextBytes(salt);
@@ -55,5 +55,13 @@ public class PinSet extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private Boolean validatePin(int length) {
+        if (length == 4) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

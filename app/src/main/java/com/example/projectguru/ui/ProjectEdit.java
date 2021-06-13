@@ -93,7 +93,7 @@ public class ProjectEdit extends AppCompatActivity implements AdapterView.OnItem
             public void onClick(View v) {
                 String tempName = String.valueOf(projectNamePlainText.getText());
                 int length = tempName.length();
-                if (length < 1) {
+                if (validateName(length) == false) {
                     Toast.makeText(getApplicationContext(), "Name cannot be blank.", Toast.LENGTH_LONG).show();
                 } else {
                     //Gathering field entries and inserting into Project table
@@ -135,6 +135,14 @@ public class ProjectEdit extends AppCompatActivity implements AdapterView.OnItem
         } else {
             Log.d(ProjectEdit.LOG_TAG, "selected Project is null");
             selectedProject = new Project();
+        }
+    }
+
+    private Boolean validateName(int length) {
+        if (length < 1) {
+            return true;
+        } else {
+            return false;
         }
     }
 
