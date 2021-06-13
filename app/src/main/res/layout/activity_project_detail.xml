@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="65dp"
         android:clickable="true"
         android:src="@android:drawable/ic_input_add"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,13 +22,27 @@
     <ListView
         android:id="@+id/phaseList"
         android:layout_width="276dp"
-        android:layout_height="329dp"
+        android:layout_height="165dp"
         android:layout_marginStart="65dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="65dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPhone" />
+        app:layout_constraintTop_toBottomOf="@+id/phasesTitleTextView" />
+
+    <TextView
+        android:id="@+id/phasesTitleTextView"
+        android:layout_width="250dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="25dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Phases"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editProjectButton" />
 
     <TextView
         android:id="@+id/projectTitleTextView"
@@ -45,7 +59,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewEmail"
+        android:id="@+id/startDateTextView"
         android:layout_width="91dp"
         android:layout_height="19dp"
         android:layout_marginStart="65dp"
@@ -56,7 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/projectTitleTextView" />
 
     <TextView
-        android:id="@+id/textViewPhone"
+        android:id="@+id/endDateTextView"
         android:layout_width="91dp"
         android:layout_height="19dp"
         android:layout_marginStart="65dp"
@@ -64,7 +78,7 @@
         android:fontFamily="sans-serif-black"
         android:text="End Date"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/startDateTextView" />
 
     <TextView
         android:id="@+id/projectStartTextView"
@@ -94,21 +108,21 @@
         android:id="@+id/editProjectButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="65dp"
         android:clickable="true"
-        app:layout_constraintEnd_toStartOf="@+id/addProjectPhaseButton"
-        app:layout_constraintTop_toBottomOf="@+id/phaseList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/projectEndTextView"
         app:srcCompat="@android:drawable/ic_menu_edit" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/deleteProjectButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="10dp"
         android:clickable="true"
         app:layout_constraintEnd_toStartOf="@+id/editProjectButton"
-        app:layout_constraintTop_toBottomOf="@+id/phaseList"
+        app:layout_constraintTop_toBottomOf="@+id/projectEndTextView"
         app:srcCompat="@android:drawable/ic_delete" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -138,11 +138,11 @@ public class ProjectEdit extends AppCompatActivity implements AdapterView.OnItem
         }
     }
 
-    private Boolean validateName(int length) {
+    protected Boolean validateName(int length) {
         if (length < 1) {
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
 

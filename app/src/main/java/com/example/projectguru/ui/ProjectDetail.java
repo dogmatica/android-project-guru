@@ -87,8 +87,8 @@ public class ProjectDetail extends AppCompatActivity {
         editProjectButton = findViewById(R.id.editProjectButton);
         deleteProjectButton = findViewById(R.id.deleteProjectButton);
         projectTitleTextView = findViewById(R.id.projectTitleTextView);
-        startDateTextView = findViewById(R.id.textViewEmail);
-        endDateTextView = findViewById(R.id.textViewPhone);
+        startDateTextView = findViewById(R.id.startDateTextView);
+        endDateTextView = findViewById(R.id.endDateTextView);
         projectStartTextView = findViewById(R.id.projectStartTextView);
         projectEndTextView = findViewById(R.id.projectEndTextView);
         phaseList = findViewById(R.id.phaseList);

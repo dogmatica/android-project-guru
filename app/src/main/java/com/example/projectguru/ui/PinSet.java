@@ -57,7 +57,7 @@ public class PinSet extends AppCompatActivity {
         });
     }
 
-    private Boolean validatePin(int length) {
+    protected Boolean validatePin(int length) {
         if (length == 4) {
             return true;
         } else {
